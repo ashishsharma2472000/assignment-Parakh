@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div style="margin-top: 10px;margin-left: 1px;">
+        <p>Cosmetics
+            <hr size="2px" color="black" style=" border-top: 2px solid; opacity: 1.25" />
+        </p>
+        
+    </div>
+
+    <div class="border border" style="height: 182px; width: 187px;margin-left: 2px;padding-left: 12px;--bs-border-width: 2px;--bs-border-color: royalblue;">
+        Name:<span id="n1"></span> <br/>
+        Price:<span id="p1"></span><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color: royalblue;"  onclick="submitdata1()">Add to the cart</button><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color:royalblue;" onclick="remove1()">Remove from cart</button>
+    </div>
+
+    <div class="border border" style="height: 182px; width: 187px;margin-left: 2px;padding-left: 12px;--bs-border-width: 2px;--bs-border-color: royalblue;    position: absolute;
+    left: 700px;
+    top: 69px;">
+        Name:<span id="n2"></span> <br/>
+        Price:<span id="p2"></span><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color: royalblue;" onclick="submitdata2()">Add to the cart</button><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color:royalblue;" onclick="remove2()">Remove from cart</button>
+    </div>
+
+    <div style="margin-top: 28px;">
+        <p>Household
+            <hr size="2px" color="black" style=" border-top: 2px solid; opacity: 1.25" />
+        </p>
+    </div>
+
+    <div class="border border" style="height: 182px; width: 187px;margin-left: 2px;padding-left: 12px;--bs-border-width: 2px;--bs-border-color: royalblue;">
+        Name:<span id="n3"></span> <br/>
+        Price:<span id="p3"></span><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color: royalblue;"  
+        onclick="submitdata3()">Add to the cart</button><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color:royalblue;" 
+        onclick="remove3()">Remove from cart</button>
+    </div>
+
+    <div class="border border" style="height: 182px; width: 187px;margin-left: 2px;padding-left: 12px;--bs-border-width: 2px;--bs-border-color: royalblue;    position: absolute;
+    left: 700px;
+    top: 336px;">
+        Name:<span id="n4"></span> <br/>
+        Price:<span id="p4"></span><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color: royalblue;
+        " onclick="submitdata4()">Add to the cart</button><br/><br/>
+        <button style="background-color: royalblue;height: 31px;width: 145px;border-color:royalblue;"onclick="remove4()">Remove from cart</button>
+    </div>
+
+    <hr size="2px" color="black" style=" border-top: 2px solid; opacity: 1.25; margin-top: 99px"  />
+
+
+
+    <script type="text/javascript">
+        fetch('./data.json')
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data)
+            document.getElementById('n1').innerHTML= data.data[0].productList[0].name;
+            document.getElementById('p1').innerHTML = data.data[0].productList[0].price;
+            document.getElementById('n2').innerHTML= data.data[0].productList[1].name;
+            document.getElementById('p2').innerHTML = data.data[0].productList[1].price;
+            document.getElementById('n3').innerHTML= data.data[1].productList[0].name;
+            document.getElementById('p3').innerHTML = data.data[1].productList[0].price;
+            document.getElementById('n4').innerHTML= data.data[1].productList[1].name;
+            document.getElementById('p4').innerHTML = data.data[1].productList[1].price;
+
+        })
+
+        let array=[];
+
+        function submitdata1(){
+            fetch('./data.json')
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data)
+                var ar={
+                        name:data.data[0].productList[0].name,
+                        price:data.data[0].productList[0].price,
+                        cat:data.data[0].name
+    
+                    }
+
+                    array.push(ar);
+                    console.log(data.data[0].productList[0].name  + ' is added to cart')
+                    alert(data.data[0].productList[0].name  + ' is added to cart')
+                    console.log(array)
+        
+            })
+           
+         }
+
+         function submitdata2(){
+            fetch('./data.json')
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data)
+                var ar={
+                        name:data.data[0].productList[1].name,
+                        price:data.data[0].productList[1].price,
+                        cat:data.data[0].name
+    
+                    }
+                    array.push(ar);
+                    console.log(data.data[0].productList[1].name  + ' is added to cart')
+                    alert(data.data[0].productList[1].name  + ' is added to cart')
+                    console.log(array)
+
+                })
+
+            }
+
+            function submitdata3(){
+            fetch('./data.json')
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data)
+                var ar={
+                        name:data.data[1].productList[0].name,
+                        price:data.data[1].productList[0].price,
+                        cat:data.data[1].name
+    
+                    }
+                    array.push(ar);
+                    console.log(data.data[1].productList[0].name  + ' is added to cart');
+                    alert(data.data[1].productList[0].name  + ' is added to cart');
+                    console.log(array)
+
+                })
+
+            }
+
+
+            function submitdata4(){
+            fetch('./data.json')
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data)
+                var ar={
+                        name:data.data[1].productList[1].name,
+                        price:data.data[1].productList[1].price,
+                        cat:data.data[1].name
+    
+                    }
+                    array.push(ar);
+                    console.log(data.data[1].productList[1].name  + ' is added to cart')
+                    alert(data.data[1].productList[1].name  + ' is added to cart')
+                    console.log(array)
+
+                })
+
+            }
+
+            
+
+         function  remove1(){
+            var flag=0;
+            for(i=0;i<array.length;i++)
+            {
+                if(array[i]['name']=='Hair Oil' && array[i]['cat']=='Cosmetics'){ 
+                    console.log(array[i]['name'] +' is removed from cart')
+                    alert(array[i]['name'] +' is removed from cart')
+                    array.splice(i,1);
+                    flag=1;
+                    }
+            }
+            if(flag==0){
+                console.log('item is not in cart')
+                alert('item is not in cart')
+            }
+            console.log(array)
+        }
+
+        function  remove2(){
+            var flag=0;
+            for(i=0;i<array.length;i++)
+            {
+                if(array[i]['name']=='Face wash'&& array[i]['cat']=='Cosmetics'){ 
+                    console.log(array[i]['name'] +' is removed from cart')
+                    alert(array[i]['name'] +' is removed from cart')
+                    array.splice(i,1);
+                    flag=1;
+                    }
+            }
+            if(flag==0){
+                console.log('item is not in cart')
+                alert('item is not in cart')
+            }
+            console.log(array)
+        }
+
+        function  remove3(){
+            var flag=0;
+            for(i=0;i<array.length;i++)
+            {
+                if(array[i]['name']=='Hair Oil' && array[i]['cat']=='Household'){ 
+                    console.log(array[i]['name'] +' is removed from cart')
+                    alert(array[i]['name'] +' is removed from cart')
+                    array.splice(i,1);
+                    flag=1;
+                    }
+            }
+            if(flag==0){
+                console.log('item is not in cart')
+                alert('item is not in cart')
+            }
+            console.log(array)
+        }
+
+        function  remove4(){
+            var flag=0;
+            for(i=0;i<array.length;i++)
+            {
+                if(array[i]['name']=='Face wash' && array[i]['cat']=='Household'){ 
+                    console.log(array[i]['name'] +' is removed from cart')
+                    alert(array[i]['name'] +' is removed from cart')
+                    array.splice(i,1);
+                    flag=1;
+                    }
+            }
+            if(flag==0){
+                console.log('item is not in cart')
+                alert('item is not in cart')
+            }
+            console.log(array)
+        }
+
+
+
+        
+    </script>
+
+
+
+</body>
+</html>
